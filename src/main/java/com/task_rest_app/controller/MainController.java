@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,11 @@ public class MainController {
 	public ResponseEntity<StudentResDto> updateOneUser(@PathVariable int id,
 			@RequestBody StudentReqDto studentReqDto) throws Exception {
 		return userService.updateUser(id, studentReqDto);
+	}
+	
+	@DeleteMapping("deleteuser/{id}")
+	public String deleteRecord(@PathVariable("id") int id) {
+		return userService.removeRecord(id);
 	}
 
 }

@@ -57,4 +57,13 @@ public class UserService {
 		return allUsers;
 	}
 
+	public String removeRecord(int id) {
+		User checkUser = userRepository.findUserById(id);
+		if(checkUser==null) {
+			return "no reccord found to delete!!!";
+		}
+		userRepository.deleteById(id);
+		return "record deleted successfully!!";
+	}
+
 }
